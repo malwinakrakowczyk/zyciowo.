@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVision - Twoja Przyszłość Zaczyna Się Tutaj</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --primary-purple: #7c3aed;
+            --dark-bg: #0f172a;
+            --light-text: #f8fafc;
+            --gray-text: #94a3b8;
+            --accent: #06b6d4;
+            --card-bg: rgba(30, 41, 59, 0.6);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #1e293b 100%);
+            color: var(--light-text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+        
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-blue);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-purple);
+            top: 50%;
+            right: -150px;
+            animation-delay: 5s;
+        }
+        
+        .shape-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--accent);
+            bottom: -100px;
+            left: 30%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, 50px) rotate(90deg); }
+            50% { transform: translate(0, 100px) rotate(180deg); }
+            75% { transform: translate(-50px, 50px) rotate(270deg); }
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(37, 99, 235, 0.2);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            animation: slideDown 1s ease-out 0.2s both;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideDown 1s ease-out 0.4s both;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--gray-text);
+            max-width: 700px;
+            margin: 0 auto 50px;
+            animation: slideDown 1s ease-out 0.6s both;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+            animation: slideDown 1s ease-out 0.8s both;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.5);
+        }
+        
+        .cta-button::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button:hover::after {
+            transform: translateX(5px);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Problem Section */
+        .problem-box {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 60px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .problem-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .problem-icon {
+            font-size: 4rem;
+            margin-bottom: 30px;
+        }
+        
+        .problem-box h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ef4444;
+        }
+        
+        .problem-box p {
+            font-size: 1.2rem;
+            color: var(--gray-text);
+            line-height: 1.8;
+        }
+        
+        /* Solution Section */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .solution-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .solution-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+        }
+        
+        .solution-card h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .solution-card p {
+            color: var(--gray-text);
+            line-height: 1.7;
+        }
+        
+        /* How It Works */
+        .steps-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s ease;
+        }
+        
+        .step.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .step-number {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .step-content h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .step-content p {
+            color: var(--gray-text);
+            line-height: 1.7;
+        }
+        
+        /* Benefits */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .benefit-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s ease;
+        }
+        
+        .benefit-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-card p {
+            color: var(--gray-text);
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            margin: 60px auto 0;
+        }
+        
+        .stat {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .stat.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stat-number {
+            font-family: 'Sora', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: var(--gray-text);
+            font-size: 1.1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            border-radius: 30px;
+            padding: 80px 40px;
+            text-align: center;
+            margin: 100px 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .cta-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cta-section h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .email-form {
+            display: flex;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .email-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 18px 25px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--dark-bg);
+        }
+        
+        .email-input:focus {
+            outline: 3px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .submit-btn {
+            padding: 18px 40px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            background: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--light-text);
+        }
+        
+        .copyright {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 20px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .problem-box {
+                padding: 40px 30px;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin: 0 auto;
+            }
+            
+            .cta-section {
+                padding: 60px 30px;
+                margin: 60px 20px;
+            }
+            
+            .email-form {
+                flex-direction: column;
+            }
+            
+            .email-input {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">🚀 Nowa era edukacji online</div>
+            <h1>EduVision</h1>
+            <p class="hero-subtitle">Transformuj swoją karierę dzięki innowacyjnym kursom online. Ucz się w swoim tempie, zdobywaj praktyczne umiejętności i osiągaj cele zawodowe.</p>
+            <a href="#cta" class="cta-button">Dołącz do waitlisty</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem">
+        <div class="container">
+            <h2 class="section-title">Problem, który rozwiązujemy</h2>
+            <div class="problem-box">
+                <div class="problem-icon">😰</div>
+                <h3>Zmagasz się z brakiem czasu i motywacji?</h3>
+                <p>Tradycyjna edukacja jest sztywna, kosztowna i nie dostosowuje się do Twojego trybu życia. Spędzasz godziny na poszukiwaniu wartościowych materiałów, tracąc cenny czas i pieniądze na kursy, które nie przynoszą realnych rezultatów.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution">
+        <div class="container">
+            <h2 class="section-title">Jak EduVision to zmienia</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <h4>⚡ Elastyczne Uczenie</h4>
+                    <p>Ucz się kiedy i gdzie chcesz. Nasze kursy dostosowują się do Twojego harmonogramu, nie na odwrót.</p>
+                </div>
+                <div class="solution-card">
+                    <h4>🎯 Praktyczne Projekty</h4>
+                    <p>Zdobywaj realne umiejętności poprzez projekty, które możesz pokazać pracodawcom i klientom.</p>
+                </div>
+                <div class="solution-card">
+                    <h4>👥 Społeczność Ekspertów</h4>
+                    <p>Ucz się od najlepszych w branży i współpracuj z innymi zmotywowanymi uczestnikami.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Jak to działa</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Wybierz ścieżkę rozwoju</h4>
+                        <p>Zidentifikuj swoje cele i wybierz kurs dopasowany do Twoich ambicji zawodowych.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Ucz się w swoim tempie</h4>
+                        <p>Korzystaj z interaktywnych lekcji wideo, materiałów do pobrania i praktycznych zadań.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Buduj portfolio projektów</h4>
+                        <p>Twórz realne projekty pod okiem mentorów i otrzymuj konstruktywny feedback.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Osiągnij swoje cele</h4>
+                        <p>Zdobądź certyfikat, nowe umiejętności i pewność siebie w nowej dziedzinie.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits">
+        <div class="container">
+            <h2 class="section-title">Główne korzyści</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎓</div>
+                    <h4>Certyfikaty branżowe</h4>
+                    <p>Zdobądź rozpoznawalne certyfikaty, które wyróżnią Cię na rynku pracy</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💼</div>
+                    <h4>Awans zawodowy</h4>
+                    <p>Zwiększ swoje szanse na lepszą pracę i wyższe wynagrodzenie</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌟</div>
+                    <h4>Lifetime access</h4>
+                    <p>Nieograniczony dostęp do materiałów i wszystkich przyszłych aktualizacji</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h4>Networking</h4>
+                    <p>Poznaj profesjonalistów i zbuduj wartościową sieć kontaktów</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <h2 class="section-title">Dołącz do tysięcy zadowolonych uczestników</h2>
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">15K+</div>
+                    <div class="stat-label">Absolwentów</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4.9/5</div>
+                    <div class="stat-label">Średnia ocen</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Zadowolonych uczestników</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="container">
+        <section id="cta" class="cta-section">
+            <h2>Zacznij swoją transformację już dziś</h2>
+            <p>Dołącz do waitlisty i otrzymaj 30% zniżki na pierwszy kurs!</p>
+            <form class="email-form" onsubmit="handleSubmit(event)">
+                <input type="email" class="email-input" placeholder="Twój adres email" required>
+                <button type="submit" class="submit-btn">Dołącz do waitlisty</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#o-nas">O nas</a>
+                <a href="#kursy">Kursy</a>
+                <a href="#blog">Blog</a>
+                <a href="#kontakt">Kontakt</a>
+                <a href="#polityka">Polityka prywatności</a>
+                <a href="#regulamin">Regulamin</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 EduVision. Wszystkie prawa zastrzeżone.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll(
+                '.section-title, .problem-box, .solution-card, .step, .benefit-card, .stat, .cta-section'
+            );
+            
+            animatedElements.forEach((el, index) => {
+                el.style.transitionDelay = `${index * 0.1}s`;
+                observer.observe(el);
+            });
+        });
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('.email-input').value;
+            
+            // Show success message
+            alert(`Dziękujemy! 🎉\n\nTwój adres email (${email}) został dodany do waitlisty.\n\nWkrótce otrzymasz od nas wiadomość z ekskluzywną zniżką 30%!`);
+            
+            // Reset form
+            event.target.reset();
+            
+            // Here you would typically send the email to your backend
+            // Example: fetch('/api/waitlist', { method: 'POST', body: JSON.stringify({ email }) })
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
